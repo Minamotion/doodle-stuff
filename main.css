@@ -1,0 +1,45 @@
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    align-content: center;
+    text-align: center;
+}
+input[type="file"] {
+    display: none;
+}
+.btn {
+    border: none;
+    padding: 6px;
+    margin: 3px;
+    display: inline-block;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: black;
+    font-size: 14;
+    text-decoration: none;
+}
+.btn:disabled, .btn[look=disabled] {
+    background-color: #808080;
+}
+.border {
+    border: 12px #ffffff solid;
+}
+.item {
+    border: 12px #0000ff solid;
+    background: #00001a;
+    width: 6in;
+    color: #ffffff;
+    display: grid;
+    margin: auto;
+}
+.item > .btn {
+    background: #0000ff;
+    color: #ffffff;
+}
+.container {
+    height: 5in;
+    margin: auto;
+    width: 11in;
+    overflow-y: auto;
+}

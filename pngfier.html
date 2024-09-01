@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>Doodle pngfier</title>
+        <script src='./pngfier.js'></script>
+        <link rel="stylesheet" href="./main.css">
+        <link rel="icon" href="./icon.png">
+    </head>
+    <body>
+        <h1><i>Doodle pngfier</i></h1>
+        <label for="doodle" class="btn">Upload a doodle file</label><input type="file" accept=".txt" id="doodle">
+        | <button id="convert" class="btn" disabled>Nothing uploaded</button>
+        | <a id="output" download look="disabled" class="btn">Download image</a><br><br>
+        <canvas width="480" height="360" id="canvas" class="border"></canvas>
+    </body>
+</html>
