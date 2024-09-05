@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (possible) {clean.push([instruction])}
                     break;
                 case "END":
-                case "PEN":
                     possible = true
                     if (dirty[line-1] == instruction) {
                         possible = false
@@ -52,6 +51,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                     if (possible) {beginDraw = false, clean.push([instruction])}
                     break;
+                case "PEN":
+                    clean.push([instruction])
                 default:
                     break;
             }
