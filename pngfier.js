@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (valid || parseable) {
                         switch (parsed[1]) {
                             case "COLOR":
-                                pen.strokeStyle = parsed[2] // Should be HEX format or the name of a color in lowercase (EXAMPLE: "#0000ff" or "blue")
+                                pen.strokeStyle = "#"+parsed[2] // Should be in HEX without the # (EXAMPLE: "0000ff")
                                 break;
                             case "WIDTH":
                                 pen.lineWidth = parsed[2] // Should be number
