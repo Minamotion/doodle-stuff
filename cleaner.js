@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (possible) {beginDraw = false, clean.push([instruction])}
                     break;
                 case "PEN":
-                    clean.push([instruction])
+                    clean.push([instruction.toUpperCase()])
                 default:
                     break;
             }
