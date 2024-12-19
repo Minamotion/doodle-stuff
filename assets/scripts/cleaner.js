@@ -42,17 +42,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (possible) {clean.push([instruction])}
                     break;
                 case "END":
-                    possible = true
-                    if (dirty[line-1] == instruction) {
-                        possible = false
-                    }
-                    if (!beginDraw) {
-                        possible = false
-                    }
+                    possible = !((dirty[line-1] == instruction) || (!beginDraw))
                     if (possible) {beginDraw = false, clean.push([instruction])}
                     break;
                 case "PEN":
                     clean.push([instruction.toUpperCase()])
+                    break;
                 default:
                     break;
             }
@@ -65,8 +60,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     document.getElementById("doodle").addEventListener("change", () => {
         document.getElementById("doodle").files[0].text().then(async (doodle) => {
-            let clean = cleanDoodle(doodle)
-            clean = cleanDoodle(clean)
+            let clean= doodle
+            for (let i= 0; i< 2; i++) {
+                clean= cleanDoodle(clean)
+            }
             document.getElementById("output").setAttribute("href",["data:text/plain,",clean.replace("\r","").replace("\n","%0A")].join(""))
             document.getElementById("output").removeAttribute("look")
         })

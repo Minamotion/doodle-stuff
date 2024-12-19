@@ -46,13 +46,18 @@ document.addEventListener("DOMContentLoaded", () => {
                                 pen.strokeStyle = "#"+parsed[2] // Should be in HEX without the # (EXAMPLE: "0000ff")
                                 break;
                             case "WIDTH":
-                                pen.lineWidth = parsed[2] // Should be number
+                                let num = +parsed[2]
+                                if (!Number.isNaN(num)) {
+                                    pen.lineWidth = num
+                                } else {
+                                    console.warning(`Parameter for WIDTH is NaN at line ${line + 1} (${instruction})`)
+                                }
                                 break;
                             case "RESET":
                                 defaultPen()
                                 break;
                             default:
-                                console.warn(`PEN instruction is invalid ${line + 1} (${instruction})`)
+                                console.warn(`PEN instruction is invalid at line ${line + 1} (${instruction})`)
                                 break;
                         }
                     }
@@ -61,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (valid || parseable) { pen.beginPath(); pen.moveTo(+parsed[1] + 240, +(+parsed[2]) * -1 + 180); pen.lineTo(+parsed[1] + 240, +(+parsed[2]) * -1 + 180); }
                     break;
                 case "DRAW":
-                    if (valid || parseable) { pen.lineTo(+parsed[1] + 240, +(+parsed[2]) * -1 + 180); }
+                    if (valid || parseable) { pen.lineTo(+parsed[1] + 240, (+parsed[2] * -1) + 180); }
                     break;
                 case "END":
                     if (valid || parseable) {
@@ -76,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (parseable || valid) {
                 console.log(`Line ${line + 1} parsed successfully (11)`)
             } else {
-                console.log(`Couldn't parse line ${line + 1} (${+parseable}${+valid})`)
+                console.error(`Couldn't parse line ${line + 1} (${+parseable}${+valid})`)
             }
         })
         return doodleworthy
